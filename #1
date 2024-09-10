@@ -1,0 +1,68 @@
+import random
+
+class Transport:
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+        self.speed = 0
+
+    def start(self):
+        increment = random.randint(20, 80)
+        self.speed += increment
+        print(f"Скорость увеличена, сейчас: {self.speed} км/ч")
+
+    def stop(self):
+        self.speed = 0
+        print("Транспорт остановился.")
+
+    def get_info(self):
+        print(f"Марка: {self.brand}, Модель: {self.model}, Год выпуска: {self.year}, Скорость: {self.speed} км/ч")
+
+
+class Car(Transport):
+    def __init__(self, brand, model, year, engine_type):
+        super().__init__(brand, model, year)
+        self.engine_type = engine_type
+
+    def get_info(self):
+        super().get_info()
+        print(f"Тип двигателя: {self.engine_type}")
+
+
+class Bicycle(Transport):
+    def __init__(self, brand, model, year, bike_type):
+        super().__init__(brand, model, year)
+        self.bike_type = bike_type
+
+    def get_info(self):
+        super().get_info()
+        print(f"Тип велосипеда: {self.bike_type}")
+
+
+class Train(Transport):
+    def __init__(self, brand, model, year, carriages):
+        super().__init__(brand, model, year)
+        self.carriages = carriages
+
+    def get_info(self):
+        super().get_info()
+        print(f"Количество вагонов: {self.carriages}")
+
+
+def test_transport(transport):
+    transport.get_info()
+    transport.start()
+    if transport.speed < 40:
+        print("Плетешься как черепаха, лол")
+    elif transport.speed > 70:
+        print("Ты не человек..")
+    else:
+        print("Так держать, чувак!")
+    
+
+
+
+my_bike = Bicycle("Tsunami", "SNM300", 2024, "Фикс")
+test_transport(my_bike)
+
