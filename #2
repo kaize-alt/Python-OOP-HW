@@ -1,0 +1,158 @@
+class Animal:
+    def __init__(self, name, age, gender, weight):
+        self.name = name
+        self.age = age
+        self.gender = gender
+        self.weight = weight
+
+    def make_sound(self):
+        raise NotImplementedError()
+
+    def eat(self):
+        raise NotImplementedError()
+
+    def display_info(self):
+        info = (f"Имя: {self.name}\n"
+                f"Возраст: {self.age}\n"
+                f"Пол: {self.gender}\n"
+                f"Вес: {self.weight}\n")
+        return info
+
+
+class Mammal(Animal):
+    def __init__(self, name, age, gender, weight, hair_color):
+        super().__init__(name, age, gender, weight)
+        self.hair_color = hair_color
+
+    def make_sound(self):
+        raise NotImplementedError()
+
+    def eat(self):
+        return f"{self.name} ест пищу."
+
+    def nurse(self):
+        return f"{self.name} кормит своих детенышей молоком."
+
+    def display_info(self):
+        info = super().display_info()
+        info += f"Цвет шерсти: {self.hair_color}\n"
+        return info
+
+
+class Bird(Animal):
+    def __init__(self, name, age, gender, weight, wing_span):
+        super().__init__(name, age, gender, weight)
+        self.wing_span = wing_span
+
+    def make_sound(self):
+        raise NotImplementedError()
+
+    def eat(self):
+        return f"{self.name} клюет еду."
+
+    def fly(self):
+        return f"{self.name} летит."
+
+    def display_info(self):
+        info = super().display_info()
+        info += f"Размах крыльев: {self.wing_span}\n"
+        return info
+
+
+class Reptile(Animal):
+    def __init__(self, name, age, gender, weight, scale_type):
+        super().__init__(name, age, gender, weight)
+        self.scale_type = scale_type
+
+    def make_sound(self):
+        raise NotImplementedError()
+
+    def eat(self):
+        return f"{self.name} поглощает свою добычу."
+
+    def shed_skin(self):
+        return f"{self.name} линяет."
+
+    def display_info(self):
+        info = super().display_info()
+        info += f"Тип чешуи: {self.scale_type}\n"
+        return info
+
+
+class Lion(Mammal):
+    def __init__(self, name, age, gender, weight, hair_color):
+        super().__init__(name, age, gender, weight, hair_color)
+
+    def make_sound(self):
+        return "Оглушительно ревет"
+
+    def eat(self):
+        return f"{self.name} ест мясо."
+
+
+class Cat(Mammal):
+    def __init__(self, name, age, gender, weight, hair_color):
+        super().__init__(name, age, gender, weight, hair_color)
+
+    def make_sound(self):
+        return "Мяукает"
+
+    def eat(self):
+        return f"{self.name} ест рыбу."
+
+
+class Hummingbird(Bird):
+    def __init__(self, name, age, gender, weight, wing_span):
+        super().__init__(name, age, gender, weight, wing_span)
+
+    def make_sound(self):
+        return "Жужжит"
+
+    def fly(self):
+        return f"{self.name} быстро машет крыльями."
+
+
+class Ostrich(Bird):
+    def __init__(self, name, age, gender, weight, wing_span):
+        super().__init__(name, age, gender, weight, wing_span)
+
+    def make_sound(self):
+        return "Громко ревет"
+
+    def fly(self):
+        return f"{self.name} не может летать."
+
+
+class Iguana(Reptile):
+    def __init__(self, name, age, gender, weight, scale_type):
+        super().__init__(name, age, gender, weight, scale_type)
+
+    def make_sound(self):
+        return "Шипит"
+
+    def shed_skin(self):
+        return f"{self.name} линяет."
+
+
+def make_all_sounds(animals):
+    for animal in animals:
+        print(f"{animal.name} : {animal.make_sound()}")
+
+
+if __name__ == "__main__":
+    lion = Lion(name="Лев", age=5, gender="Мужской", weight=200, hair_color="Золотистый")
+    cat = Cat(name="Кот", age=3, gender="Женский", weight=4, hair_color="Черный")
+    hummingbird = Hummingbird(name="Колибри (WindBreaker)", age=1, gender="Мужской", weight=0.02, wing_span=0.1)
+    ostrich = Ostrich(name="Страус", age=4, gender="Женский", weight=90, wing_span=2.5)
+    iguana = Iguana(name="Игуана", age=2, gender="Мужской", weight=3, scale_type="Шершавая")
+
+    print(lion.display_info())
+    print(cat.display_info())
+    print(hummingbird.display_info())
+    print(ostrich.display_info())
+    print(iguana.display_info())
+
+    animals = [lion, cat, hummingbird, ostrich, iguana]
+    make_all_sounds(animals)
+
+#Здравствуйте агай, хочу вам сказать что забыл в прошлом задании вызвать один метод в конце для демонстрации, мне несколько неловко хд.
